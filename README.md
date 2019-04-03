@@ -24,8 +24,8 @@ Then open your browser on http://localhost:5000
 
 ## Structure:
 
-Your **backend** goes on [/w209.py], the one on this example simply loads a csv file using pandas, and sends a JSON response with the states revenues for each year, try it with [http://localhost:5000/getData/2008]
+Your **backend** goes on [/w209.py](/w209.py), the one on this example simply loads a csv file using pandas, and sends a JSON response with the states revenues for each year, try it with [http://localhost:5000/getData/2008]
 
-The **frontend** is a simple HTML file that you can find on [/templates/index.html], and that loads all of its resources from the [/static] folder. There are folders for [/static/js], [/static/css] and [/static/data]
+The **frontend** is a simple HTML file that you can find on [/templates/index.html](/templates/index.html), and that loads all of its resources from the [/static](/static) folder. There are folders for [/static/js]([/static/js]), [/static/css](/static/css) and [/static/data](/static/data)
 
 
