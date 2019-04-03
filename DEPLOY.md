@@ -15,7 +15,6 @@ Steps
 ```
 cd ~/w209
 touch start.wsgi
-touch
 ```
 4. Try your app in http://people.ischool.berkeley.edu/~jguerra/w209 replacing jguerra with your username
 5. If something fails, check de development console for JS errors, or for backend errors look into the /var/log/httpd/people_error_log file
