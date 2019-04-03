@@ -27,7 +27,7 @@
 </style>
 <body>
   <h1>US Map by revenue</h1>
-  <input id="yearSlider" type="range" min="1942" max="2008" value="2008" class="slider" id="myRange"><label id="yearSliderLabel" for="yearSlider">2018</label>
+  <input id="yearSlider" type="range" min="1942" max="2008" value="2008" class="slider" id="myRange"><label id="yearSliderLabel" for="yearSlider">2008</label>
   <div id="maps"></div>
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
@@ -61,38 +61,40 @@ d3.select("#yearSlider")
     update(d3.event.target.value);
   });
 
+update(2008);
+
 function update(year) {
   d3.json("getData/" + year,
-  function (err, data) {
-    if (err) throw err;
+    function (err, data) {
+      if (err) throw err;
 
-    data.forEach(
-      function (d) {
-        // Convert the state name to ansi code;
-        var state = stateCodes[d["Name"].slice(0,2)];
-        if (state===undefined) {
-          return;
-        }
-        d.id = state;
-        d.value = 1.0*+d[attrib]/+d["Population (000)"];
-      });
-
-
-
-    // Create an unified color scale and assign it to the chart
-    var domain = d3.extent(data.map(function (d) { return d.value; }));
-    chart.colorScale(d3.scaleThreshold()
-      // A stepped list with 9 elements for the domain
-      .domain(d3.range(domain[0], domain[1], (domain[1]-domain[0])/9))
-      .range(d3.schemeBlues[9])
-    );
+      data.forEach(
+        function (d) {
+          // Convert the state name to ansi code;
+          var state = stateCodes[d["Name"].slice(0,2)];
+          if (state===undefined) {
+            return;
+          }
+          d.id = state;
+          d.value = 1.0*+d[attrib]/+d["Population (000)"];
+        });
 
 
-    d3.select("#maps")
-      .datum(data)
-      .call(chart);
 
-  }
+      // Create an unified color scale and assign it to the chart
+      var domain = d3.extent(data.map(function (d) { return d.value; }));
+      chart.colorScale(d3.scaleThreshold()
+        // A stepped list with 9 elements for the domain
+        .domain(d3.range(domain[0], domain[1], (domain[1]-domain[0])/9))
+        .range(d3.schemeBlues[9])
+      );
+
+
+      d3.select("#maps")
+        .datum(data)
+        .call(chart);
+
+    }
   );
 }
 
