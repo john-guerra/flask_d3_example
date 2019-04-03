@@ -29,6 +29,7 @@
   <h1>US Map by revenue</h1>
   <input id="yearSlider" type="range" min="1942" max="2008" value="2008" class="slider" id="myRange"><label id="yearSliderLabel" for="yearSlider">2008</label>
   <div id="maps"></div>
+  <div><a href="https://github.com/john-guerra/flask_d3_example">See the code here</a></div>
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
 <script src="https://d3js.org/topojson.v2.min.js"></script>
@@ -48,8 +49,8 @@ var chart = USCloroplethByState()
   .id(function (d) { return d.id; })
   .color(function (d) { return d.value; });
 
-var nest = d3.nest()
-  .key(function (d) { return d["Year4"]; });
+// var nest = d3.nest()
+//   .key(function (d) { return d["Year4"]; });
 
 d3.select("#yearSlider")
   .on("input", function () {
